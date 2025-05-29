@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="userData" >
+        <a href="{% url 'customer_form' %}">
+        <button>Open Customer Form</button>
+    </a>
+    </div>
+    <header>
+        <h1>Café Indiano</h1>
+        <h3 class="menu-btn">Menu</h3>
+    </header>
+    <section>
+        <form class="billing">
+            <div class="input-box">
+                <label for="item-name" class="c-white">Item Name</label>
+                <input id="item-name" list="menu" required class="p1" placeholder="Enter item using suggestions">
+                <datalist id="menu">
+                    <option value="hot coffee"></option>
+                    <option value="special coffee"></option>
+                    <option value="mango shake"></option>
+                    <option value="cold cream coffee"></option>
+                    <option value="chocolate milk"></option>
+                    <option value="roohafza sharbat"></option>
+                    <option value="roohafza milk shake"></option>
+                    <option value="espresso coffee"></option>
+                    <option value="lemon squash"></option>
+                    <option value="badam shake"></option>
+                    <option value="chocolate shake"></option>
+                    <option value="strawberry shake"></option>
+                    <option value="kesar shake"></option>
+                    <option value="banana shake"></option>
+                    <option value="bisleri"></option>
+                    <option value="tea"></option>
+                    <option value="samosa"></option>
+                </datalist>
+            </div>
+            <div class="input-box">
+                <label for="item-qty"  class="c-white">QTY.</label>
+                <input type="number" id="item-qty" class="p1" value="1" min="1">
+            </div>
+            <!-- <div class="input-box">
+                <label for="price"  class="c-white">Price</label>
+                <div class="price-box p1">Rs.10</div>
+            </div> -->
+            <div class="btn-div input-box">
+                <input type="button" value="Submit" class="btn submit-btn">
+            </div>
+        </form>
+        <div class="bill ">
+            <table>
+                <thead>
+                    <tr>
+                        <th>DESCRIPTION</th>
+                        <th>PRICE</th>
+                        <th>QTY</th>
+                        <th>TOTAL</th>
+                        <th class="action-row">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>Coffee</td>
+                        <td>RS.10</td>
+                        <td>2</td>
+                        <td>RS.20</td>
+                        <td  class="action-row"><button class="action-btn">X</button></td>
+                    </tr> -->
+                    <!-- <tr>
+                        <td>Coffee</td>
+                        <td>RS.10</td>
+                        <td>2</td>
+                        <td>RS.20</td>
+                        <td  class="action-row"><button class="action-btn">X</button></td>
+                    </tr> -->
+                </tbody>
+            </table>
+            <div class="details">
+                <div class="info-div">
+                    <p><span>Phone  :</span> 9795004789</p>
+                    <p><span>Location :</span>Greater Noida, Knowledge park 2</p>
+                    <p><span>Gmail :</span> indiano@gmail.com</p>
+                </div>
+                <div class="amount">
+                    <div class="cost">
+                        <ul>
+                            <li>SUBTOTAL</li>
+                            <li>TAX</li>
+                        </ul>
+                        <ul>
+                            <li class="bold subtotal">RS.0</li>
+                            <li class="bold tax">5%</li>
+                        </ul>
+                    </div>
+                    <div class="total">
+                        <p class="bold">TOTAL</p>
+                        <p class="bold total-price">RS.0</p>
+                    </div>
+                    
+                    <div class="button btn-div">
+                        <button class="btn print-btn">Bill</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Print -->
+        <h2 class="greeting">THANK YOU, VISIT SOON.</h2>
+        
+    </section>
+
+    
+    
+
+
+    <!-- MENU -->
+    <div class="menu">
+        <button class="close-btn">x</button>
+        <div class="wrapper">
+            
+            <ul>
+                <li>hot coffee</li>
+                <li>special coffee</li>
+                <li>mango shake</li>
+                <li>cold cream coffee</li>
+                <li>chocolate milk</li>
+                <li>roohafza sharbat</li>
+                <li>roohafza milk shake</li>
+                <li>espresso coffee</li>
+                <li>lemon squash</li>
+                <li>badam shake</li>
+                <li>chocolate shake</li>
+                <li>strawberry shake</li>
+                <li>kesar shake</li>
+                <li>banana shake</li>
+                <li>bisleri</li>
+                <li>tea</li>
+                <li>samosa</li>
+            </ul>
+            <ul class="right">
+                <li>RS.53</li>
+                <li>RS.66</li>
+                <li>RS.85</li>
+                <li>RS.92</li>
+                <li>RS.116</li>
+                <li>RS.80</li>
+                <li>RS.81</li>
+                <li>RS.104</li>
+                <li>RS.69</li>
+                <li>RS.50</li>
+                <li>RS.55</li>
+                <li>RS.75</li>
+                <li>RS.66</li>
+                <li>RS.45</li>
+                <li>RS.20</li>
+                <li>RS.10</li>
+                <li>RS.10</li>
+            </ul>
+        </div>
+        
+    </div>
+    <script>
+
+let items = [
+    {
+        item: 'hot coffee',
+        price: 53
+    },
+    {
+        item: 'special coffee',
+        price: 66
+    },
+    {
+        item: 'mango shake',
+        price: 85
+    },
+    {
+        item: 'cold cream coffee',
+        price: 92
+    },
+    {
+        item: 'chocolate milk',
+        price: 116
+    },
+    {
+        item: 'roohafza sharbat',
+        price: 80
+    },
+    {
+        item: 'roohafza milk shake',
+        price: 81
+    },
+    {
+        item: 'espresso coffee',
+        price: 104
+    },
+    {
+        item: 'lemon squash',
+        price: 69
+    },
+    {
+        item: 'badam shake',
+        price: 50
+    },
+    {
+        item: 'chocolate shake',
+        price: 55
+    },
+    {item: 'samosa',
+        price: 10
+    },
+    {
+        item: 'strawberry shake',
+        price: 75
+    },
+    {
+        item: 'kesar shake',
+        price: 66
+    },
+    {
+        item: 'banana shake',
+        price: 45
+    },
+    {
+        item: 'bisleri',
+        price: 20
+    },
+    {
+        item: 'tea',
+        price: 10
+    }
+]
+
+
+
+let inputName = document.querySelector('#item-name')
+let submitBtn = document.querySelector('.submit-btn')
+let inputQty = document.querySelector('#item-qty')
+let table = document.querySelector('table tbody')
+let subtotalDiv = document.querySelector('.subtotal')
+let taxDiv = document.querySelector('.tax')
+let totalDiv = document.querySelector('.total-price')
+
+//tax
+let tax = 5
+taxDiv.textContent = `${tax}%`
+
+//Cart
+let cart = []
+let addToCart = (item, qty) => {
+    let price = 0
+    items.forEach((x) => {
+        if (item == x.item) {
+            price = x.price
+        }
+    })
+
+    cart.push({
+        item : item,
+        qty : qty,
+        price : price
+    })
+}
+
+//Subtotal & total
+let subtotal = () => {
+
+    let subtotal = 0
+    cart.forEach((x) => {
+        subtotal += (x.price*x.qty)
+    })
+    subtotalDiv.textContent = `RS.${subtotal}`
+
+    let total = Math.round(((subtotal*tax)/100) + subtotal)
+    totalDiv.textContent = `RS.${total}`
+}
+
+let validateItem = (value) => {
+    let check = items.some((x) => {
+        return x.item.toLowerCase() == value.toLowerCase()
+    })
+    return check
+}
+
+let createTable = (item, qty) => {
+
+    //item Name
+    let td1 = document.createElement('td')
+    td1.textContent = item
+
+    //  price
+    let td2 = document.createElement('td')
+    let price
+    items.forEach((x) => {
+        if (item == x.item) {
+            price = x.price
+        }
+    })
+    td2.textContent = `Rs.${price}`
+
+    //  qty
+    let td3 = document.createElement('td')
+    td3.textContent = qty
+
+    // total cost of 1 item
+    let td4 = document.createElement('td')
+    td4.textContent = `Rs.${price * qty}`
+    
+
+    // action btn
+    let td5 = document.createElement('td')
+    td5.classList.add('action-row')
+    let removeBtn = document.createElement('button')
+    removeBtn.classList.add('action-btn')
+    removeBtn.textContent = 'X'
+    td5.appendChild(removeBtn)
+    removeBtn.addEventListener('click', (e) => {
+        debugger
+        let r = removeBtn.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent
+        let tableArr = document.querySelectorAll('tbody tr')
+        //Remove from html
+        tableArr.forEach((x) => {
+            if(x.innerHTML.includes(r)){
+                x.remove()
+            }
+        })
+
+        //Remove from cart
+        
+        cart.forEach((x, i) => {
+            if(x.item.includes(r))
+            cart.splice(i, 1)
+        
+        })
+        subtotal()
+    })
+
+    // tr
+    let tr = document.createElement('tr')
+    tr.appendChild(td1)
+    tr.appendChild(td2)
+    tr.appendChild(td3)
+    tr.appendChild(td4)
+    tr.appendChild(td5)
+    table.appendChild(tr)
+}
+
+submitBtn.addEventListener('click', (e) => {
+
+    let check = validateItem(inputName.value)
+    if ((inputName.value != '') && (inputQty.value != 0) && (check) && (inputQty.value > 0)) {
+        let item = inputName.value.toLowerCase()
+        let qty = parseInt(inputQty.value)
+        // console.log(item, qty)
+        addToCart(item, qty)
+        subtotal()
+        createTable(item, qty)
+        
+        inputName.value = ''
+        inputQty.value = '1'
+    } else {
+        alert('Enter proper values')
+    }
+
+
+})
+
+
+// MENU
+let closeBtn = document.querySelector('.close-btn')
+let menu = document.querySelector('.menu')
+let menuBtn = document.querySelector('.menu-btn')
+
+// Show menu
+menuBtn.addEventListener('click', () => {
+    menu.classList.add('active')
+})
+
+// Hide menu on close button
+closeBtn.addEventListener('click', () => {
+    menu.classList.remove('active')
+})
+
+// Hide menu on pressing Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape'|| e.code ==="Space" && menu.classList.contains('active')) {
+        menu.classList.remove('active')
+    }
+})
+
+// Print
+let printBtn = document.querySelector('.print-btn')
+printBtn.addEventListener('click', () => {
+    window.print()
+})
+
+
+
+
+    </script>
+
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* color: white; */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: #1E2530;
+}
+
+header {
+    /* background-color: antiquewhite; */
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+header h3 {
+    position: absolute;
+    top: 39px;
+    right: 55px;
+    color: orange;
+    cursor: pointer;
+}
+
+header h3:hover{
+    text-decoration: underline;
+}
+
+h1 {
+    background-color: orange;
+    padding: 13px;
+    border-radius: 36px;
+    color: black;
+}
+
+section {
+    display: flex;
+    /* border: 2px solid black;*/
+    /* background-color: blue; */
+    height: 60vh;
+    margin-top: 20px;
+}
+
+.bill,
+.billing {
+    width: 50%;
+}
+
+
+/* Billing */
+
+.billing {
+    /* background-color: antiquewhite; */
+    padding-left: 29px;
+
+}
+
+.billing #item-name {
+    width: 50%;
+}
+
+.billing * {
+    font-size: 20px;
+}
+
+.billing label {
+    display: block;
+    color: white;
+    /* font-size: 20px; */
+}
+
+.billing .p1 {
+    padding: 10px;
+}
+
+.billing .input-box {
+    margin-bottom: 16px;
+}
+
+.billing input {
+    border: none;
+    border-radius: 5px;
+}
+
+.billing #item-qty {
+    width: 18%;
+}
+
+.billing .price-box {
+    background-color: white;
+    /* width: 10%; */
+    display: inline-block;
+    border-radius: 5px;
+
+    padding: 10px;
+}
+
+.btn-div {
+    margin-top: 33px;
+}
+
+.btn-div .btn {
+    padding: 12px 40px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #146FF8;
+    color: white;
+}
+
+/* BILL */
+
+.bill * {
+    font-size: 20px;
+}
+
+.bill {
+    padding-right: 29px;
+}
+
+table {
+    /* background-color: rgb(255, 153, 28); */
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table th, td{
+    padding: 10px;
+}
+
+thead{
+    background-color: orange;
+}
+
+tbody tr{
+    border-bottom: 2px solid white;
+}
+
+tbody td{
+    color: white;
+}
+
+tbody .action-btn {
+    padding: 8px 18px;
+    border: none;
+    background-color: red;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.bill .amount{
+    /* background-color: blue; */
+    margin-top: 28px;
+    text-align: right;
+}
+
+.cost{
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: right;
+}
+
+.cost ul{
+    /*  */
+    margin-left: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cost ul li{
+    list-style: none;
+    padding: 3px 0;
+    color: white;
+}
+
+.total {
+    /* border: 1px solid black; */
+    margin: 23px 0;
+    display: flex;
+    justify-content: space-between;
+    width: 204px;
+    margin-left: auto;
+    padding: 10px;
+    background-color: orange;
+}
+
+.bill .bold{
+    font-weight: 700;
+}
+
+
+
+/* MENU */
+
+
+
+.menu{
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    display: none;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.menu.active{
+    display: flex;
+}
+
+.menu .wrapper {
+    display: flex;
+    width: 28%;
+    background-color: white;
+    position: fixed;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.menu li{
+    list-style: none;
+    padding: 4px 0;
+}
+
+.menu .close-btn {
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+    z-index: 1;
+    position: fixed;
+    top: 15vh;
+    right: 36.5vw;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.menu .close-btn:hover{
+    color: rgb(243, 22, 22);
+    /* text-decoration: underline; */
+}
+
+.info-div{
+    display: none;
+}
+
+.greeting{
+    display: none;
+}
+
+/* Print Media */
+
+@media print{
+
+    .billing,
+    header h3,
+    .print-btn,
+    .action-row {
+        display: none;
+    }
+    
+    .bill{
+        width: 100%;
+        padding-right: 0;
+        
+    }
+    section{
+        display: block;
+    }
+    
+    section{
+        padding: 0 40px;
+    }
+    
+    .greeting{
+        color: rgb(20, 111, 248);
+        text-align: center;
+        font-size: 35px;
+        display: block;
+    }
+    
+    .bill .amount{
+        margin-top: 0;
+    }
+    
+    .details{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 28px;
+    }
+    
+    .info-div{
+        display: flex;
+        flex-direction: column;
+        color: white;
+        justify-content: center;
+        font-size: 25px;
+        
+    }
+    
+    .info-div p{
+        margin-bottom: 22px;
+    }
+    
+    .info-div span{
+        color: orange;
+    }
+}
+</style>
+</body>
+
+</html>
