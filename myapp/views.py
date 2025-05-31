@@ -33,17 +33,28 @@ def submit_customer(request):
 def autenthication(request):
     return render(request, 'authentication.html')
 
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .models import Employee_Data
+from django.contrib import messages
+
+def authentication(request):
+    return render(request, 'authentication.html')
+
 def log_in(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        name = request.POST.get('name')
         password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
 
-        if user is not None:
-            login(request, user)
+        try:
+            employee = Employee_Data.objects.get(name=name, password=password)
+            request.session['employee_id'] = employee.EmployeeId
+            request.session['employee_name'] = employee.name
+            messages.success(request, f"Welcome {employee.name}!")
             return redirect('home')
-        else:
-            messages.info(request, "Invalid credentials")
-            return redirect('log_in`')
+        except Employee_Data.DoesNotExist:
+            messages.error(request, "Invalid name or password.")
+            return redirect('log_in')
     else:
-        return render(request, 'authentication.html', {})
+        return render(request, 'authentication.html')
+
